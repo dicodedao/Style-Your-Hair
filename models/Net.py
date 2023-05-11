@@ -24,7 +24,7 @@ class Net(nn.Module):
         print('Loading StyleGAN2 from checkpoint: {}'.format(self.opts.ckpt))
         checkpoint = torch.load(self.opts.ckpt, map_location=self.opts.device)
         device = self.opts.device
-        self.generator.load_state_dict(checkpoint['g_ema'])
+        self.generator.load_state_dict(checkpoint['g_ema'], strict=False)
         #import pdb; pdb.set_trace()
         try:
             self.latent_avg = checkpoint['latent_avg']
